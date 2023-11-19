@@ -9,31 +9,11 @@ from airflow.operators.postgres_operator import PostgresOperator
 
 
 def extract_data():
-    # Spécifiez le chemin vers votre fichier CSV
+#Fichier Urgences
+    # Spécifiez le chemin vers le fichier CSV
     csv_file_path_urgences = os.path.expandvars("${AIRFLOW_HOME}/data/donnees-urgences-SOS-medecins.csv")
     # Chargez les données depuis le fichier CSV
     df_urgences = pd.read_csv(csv_file_path_urgences,  delimiter=';' ) 
-
-#FICHIER Age
-    csv_file_path_age = os.path.expandvars("${AIRFLOW_HOME}/data/code-tranches-dage-donnees-urgences.csv")
-    df_age = pd.read_csv(csv_file_path_age,  delimiter=";") 
-    
-# ...
-
-# Ou pour appliquer la conversion à plusieurs colonnes en même temps
-# Remplacez 'colonne1', 'colonne2', etc., avec les noms de vos colonnes
-#df[['colonne1', 'colonne2', 'colonne3']] = df[['colonne1', 'colonne2', 'colonne3']].astype(str)
-
-#FICHIER departements 
-    json_file_path_departements = os.path.expandvars("${AIRFLOW_HOME}/data/departements-region.json")
-    with open(json_file_path_departements, 'r',encoding="UTF-8") as json_file:
-        data = json.load(json_file)
-        df_departements = pd.DataFrame(data)
-#changer le type des colonnes de departements
-        df_departements['num_dep'] = df_departements['num_dep'].astype(str)
-        df_departements['dep_name'] = df_departements['dep_name'].astype(str)
-        df_departements['region_name'] = df_departements['region_name'].astype(str)
-#Fichier urgences 
     df_urgences.columns = df_urgences.columns.str.strip() # supp des espaces 
     df_urgences = df_urgences.drop_duplicates().reset_index(drop=True) #supp des lignes en doublons :
     columns_to_convert = ['dep', 'sursaud_cl_age_corona', 'nbre_pass_corona', 'nbre_pass_tot', 'nbre_hospit_corona',
@@ -48,11 +28,26 @@ def extract_data():
     df_urgences['date_de_passage'].fillna('1999-01-01', inplace=True) 
     print('hello')
 
-#NETTOYAGE FICHIER DEPARTEMENTS
-#chargement 
+#Fichier departements 
+    json_file_path_departements = os.path.expandvars("${AIRFLOW_HOME}/data/departements-region.json")
+    with open(json_file_path_departements, 'r',encoding="UTF-8") as json_file:
+        data = json.load(json_file)
+        df_departements = pd.DataFrame(data)
+        #changer le type des colonnes de departements
+        df_departements['num_dep'] = df_departements['num_dep'].astype(str)
+        df_departements['dep_name'] = df_departements['dep_name'].astype(str)
+        df_departements['region_name'] = df_departements['region_name'].astype(str)
+
+
+#FICHIER Age
+    csv_file_path_age = os.path.expandvars("${AIRFLOW_HOME}/data/code-tranches-dage-donnees-urgences.csv")
+    df_age = pd.read_csv(csv_file_path_age,  delimiter=";") 
+    #changer le type des colonnes de departements
+    df_age["Code tranches d'age"] = df_age["Code tranches d'age"].astype(str)
+    df_age['Age'] = df_age['Age'].astype(str)
+
+
     
-    #postgres_sql_upload = PostgresHook(postgres_conn_id="postgres_connexion")
-   # df_departements.to_sql('D', postgres_sql_upload.get_sqlalchemy_engine(), if_exists='replace', chunksize=1000)
 
 
     
@@ -73,13 +68,13 @@ with DAG(
         python_callable=extract_data
     )
 
-    #create_table = PostgresOperator(
-   # task_id='create_table',
-    #postgres_conn_id='postgres_connexion',
-    #sql='sql/create_table.sql'
-    #)
+    create_table = PostgresOperator(
+    task_id='create_table',
+    postgres_conn_id='postgres_connexion',
+    sql='sql/create_table.sql'
+    )
 
 
 
-    extract 
+    create_table >> extract 
 
