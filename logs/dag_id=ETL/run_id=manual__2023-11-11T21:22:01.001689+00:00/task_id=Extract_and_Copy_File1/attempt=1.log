@@ -1,0 +1,26 @@
+[2023-11-11T21:22:03.478+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL.Extract_and_Copy_File1 manual__2023-11-11T21:22:01.001689+00:00 [queued]>
+[2023-11-11T21:22:03.487+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL.Extract_and_Copy_File1 manual__2023-11-11T21:22:01.001689+00:00 [queued]>
+[2023-11-11T21:22:03.487+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-11T21:22:03.500+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract_and_Copy_File1> on 2023-11-11 21:22:01.001689+00:00
+[2023-11-11T21:22:03.507+0000] {standard_task_runner.py:57} INFO - Started process 26595 to run task
+[2023-11-11T21:22:03.512+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ETL', 'Extract_and_Copy_File1', 'manual__2023-11-11T21:22:01.001689+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/h.py', '--cfg-path', '/tmp/tmphr1yodi7']
+[2023-11-11T21:22:03.514+0000] {standard_task_runner.py:85} INFO - Job 78: Subtask Extract_and_Copy_File1
+[2023-11-11T21:22:03.562+0000] {task_command.py:416} INFO - Running <TaskInstance: ETL.Extract_and_Copy_File1 manual__2023-11-11T21:22:01.001689+00:00 [running]> on host fb26c01043df
+[2023-11-11T21:22:03.650+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL' AIRFLOW_CTX_TASK_ID='Extract_and_Copy_File1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-11T21:22:01.001689+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-11T21:22:01.001689+00:00'
+[2023-11-11T21:22:03.655+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/h.py", line 26, in extract_and_copy_file1
+    shutil.copy(source_file1, destination_file1)
+  File "/usr/local/lib/python3.8/shutil.py", line 418, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/local/lib/python3.8/shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc, open(dst, 'wb') as fdst:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/celinahamzaoui/Desktop/Cours_Sup_de_vinci/Datawarehouse/TP3/TP_Airflow/data/code-tranches-dage-donnees-urgences.csv'
+[2023-11-11T21:22:03.666+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ETL, task_id=Extract_and_Copy_File1, execution_date=20231111T212201, start_date=20231111T212203, end_date=20231111T212203
+[2023-11-11T21:22:03.678+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 78 for task Extract_and_Copy_File1 ([Errno 2] No such file or directory: '/Users/celinahamzaoui/Desktop/Cours_Sup_de_vinci/Datawarehouse/TP3/TP_Airflow/data/code-tranches-dage-donnees-urgences.csv'; 26595)
+[2023-11-11T21:22:03.725+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-11T21:22:03.753+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,40 @@
+[2023-11-18T16:38:45.556+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-18T16:38:39.699260+00:00 [queued]>
+[2023-11-18T16:38:45.567+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-18T16:38:39.699260+00:00 [queued]>
+[2023-11-18T16:38:45.567+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-18T16:38:45.584+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-18 16:38:39.699260+00:00
+[2023-11-18T16:38:45.590+0000] {standard_task_runner.py:57} INFO - Started process 66683 to run task
+[2023-11-18T16:38:45.594+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-18T16:38:39.699260+00:00', '--job-id', '255', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmp3c6dwdhx']
+[2023-11-18T16:38:45.596+0000] {standard_task_runner.py:85} INFO - Job 255: Subtask Extract
+[2023-11-18T16:38:45.647+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-18T16:38:39.699260+00:00 [running]> on host fb26c01043df
+[2023-11-18T16:38:45.732+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-18T16:38:39.699260+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-18T16:38:39.699260+00:00'
+[2023-11-18T16:38:46.047+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:15: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences,  delimiter=';' )
+
+[2023-11-18T16:38:46.116+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 3653, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'num_dep'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Projet.py", line 33, in extract_data
+    df_departements['num_dep'] = df_age['num_dep'].astype(str)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/indexes/base.py", line 3655, in get_loc
+    raise KeyError(key) from err
+KeyError: 'num_dep'
+[2023-11-18T16:38:46.135+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=Extract, execution_date=20231118T163839, start_date=20231118T163845, end_date=20231118T163846
+[2023-11-18T16:38:46.147+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 255 for task Extract ('num_dep'; 66683)
+[2023-11-18T16:38:46.172+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-18T16:38:46.189+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

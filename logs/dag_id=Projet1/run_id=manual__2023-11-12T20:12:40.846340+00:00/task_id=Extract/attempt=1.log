@@ -1,0 +1,49 @@
+[2023-11-12T20:12:42.625+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-12T20:12:40.846340+00:00 [queued]>
+[2023-11-12T20:12:42.634+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-12T20:12:40.846340+00:00 [queued]>
+[2023-11-12T20:12:42.635+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-12T20:12:42.648+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-12 20:12:40.846340+00:00
+[2023-11-12T20:12:42.654+0000] {standard_task_runner.py:57} INFO - Started process 32892 to run task
+[2023-11-12T20:12:42.657+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-12T20:12:40.846340+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmp_fgs6u2e']
+[2023-11-12T20:12:42.659+0000] {standard_task_runner.py:85} INFO - Job 133: Subtask Extract
+[2023-11-12T20:12:42.710+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-12T20:12:40.846340+00:00 [running]> on host fb26c01043df
+[2023-11-12T20:12:42.796+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-12T20:12:40.846340+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-12T20:12:40.846340+00:00'
+[2023-11-12T20:12:43.003+0000] {logging_mixin.py:151} INFO -        dep;date_de_passage;sursaud_cl_age_corona;nbre_pass_corona;nbre_pass_tot;nbre_hospit_corona;nbre_pass_corona_h;nbre_pass_corona_f;nbre_pass_tot_h;nbre_pass_tot_f;nbre_hospit_corona_h;nbre_hospit_corona_f;nbre_acte_corona;nbre_acte_tot;nbre_acte_corona_h;nbre_acte_corona_f;nbre_acte_tot_h;nbre_acte_tot_f
+0           01;2022-12-26;0;9;435;4;6;3;219;216;1;3;;;;;;                                                                                                                                                                                                                                                              
+1                      01;2022-12-26;1;0;58;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+2                      01;2022-12-26;2;0;30;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+3                     01;2022-12-26;3;1;138;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+4                      01;2022-12-26;4;1;88;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+...                                                   ...                                                                                                                                                                                                                                                              
+214216                 976;2023-10-24;2;0;4;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+214217                976;2023-10-24;3;0;22;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+214218                 976;2023-10-24;4;0;6;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+214219                 976;2023-10-24;5;0;1;0;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+214220                    976;2023-10-24;6;;;;;;;;;;;;;;;                                                                                                                                                                                                                                                              
+
+[214221 rows x 1 columns]
+[2023-11-12T20:12:43.011+0000] {logging_mixin.py:151} INFO -   Code tranches d'age;Age
+0            0; tous âges
+1               1;0-4 ans
+2              2;5-14 ans
+3             3;15-44 ans
+4             4;45-64 ans
+5             5;65-74 ans
+6        6;75 ans ou plus
+[2023-11-12T20:12:43.020+0000] {logging_mixin.py:151} INFO -     num_dep                 dep_name                 region_name
+0        01                      Ain        Auvergne-Rhône-Alpes
+1        02                    Aisne             Hauts-de-France
+2        03                   Allier        Auvergne-Rhône-Alpes
+3        04  Alpes-de-Haute-Provence  Provence-Alpes-Côte d'Azur
+4        05             Hautes-Alpes  Provence-Alpes-Côte d'Azur
+..      ...                      ...                         ...
+96      971               Guadeloupe                  Guadeloupe
+97      972               Martinique                  Martinique
+98      973                   Guyane                      Guyane
+99      974               La Réunion                  La Réunion
+100     976                  Mayotte                     Mayotte
+
+[101 rows x 3 columns]
+[2023-11-12T20:12:43.024+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-12T20:12:43.036+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Projet1, task_id=Extract, execution_date=20231112T201240, start_date=20231112T201242, end_date=20231112T201243
+[2023-11-12T20:12:43.072+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-12T20:12:43.095+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

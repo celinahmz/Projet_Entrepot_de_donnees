@@ -1,0 +1,24 @@
+[2023-11-11T16:44:21.721+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ProjetETL.telechargement_fichier1 manual__2023-11-11T16:44:19.450135+00:00 [queued]>
+[2023-11-11T16:44:21.731+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ProjetETL.telechargement_fichier1 manual__2023-11-11T16:44:19.450135+00:00 [queued]>
+[2023-11-11T16:44:21.732+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-11T16:44:21.746+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): telechargement_fichier1> on 2023-11-11 16:44:19.450135+00:00
+[2023-11-11T16:44:21.752+0000] {standard_task_runner.py:57} INFO - Started process 24718 to run task
+[2023-11-11T16:44:21.756+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ProjetETL', 'telechargement_fichier1', 'manual__2023-11-11T16:44:19.450135+00:00', '--job-id', '65', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmp4x5_fgx3']
+[2023-11-11T16:44:21.758+0000] {standard_task_runner.py:85} INFO - Job 65: Subtask telechargement_fichier1
+[2023-11-11T16:44:21.817+0000] {task_command.py:416} INFO - Running <TaskInstance: ProjetETL.telechargement_fichier1 manual__2023-11-11T16:44:19.450135+00:00 [running]> on host fb26c01043df
+[2023-11-11T16:44:21.906+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ProjetETL' AIRFLOW_CTX_TASK_ID='telechargement_fichier1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-11T16:44:19.450135+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-11T16:44:19.450135+00:00'
+[2023-11-11T16:44:21.911+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-11T16:44:21.913+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl --keepalive-time 600 -o $AIRFLOW_HOME/data/code-tranches-dage-donnees-urgences.csv']
+[2023-11-11T16:44:21.932+0000] {subprocess.py:86} INFO - Output:
+[2023-11-11T16:44:21.944+0000] {subprocess.py:93} INFO - curl: no URL specified!
+[2023-11-11T16:44:21.945+0000] {subprocess.py:93} INFO - curl: try 'curl --help' or 'curl --manual' for more information
+[2023-11-11T16:44:21.946+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2023-11-11T16:44:21.957+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 210, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2023-11-11T16:44:21.962+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ProjetETL, task_id=telechargement_fichier1, execution_date=20231111T164419, start_date=20231111T164421, end_date=20231111T164421
+[2023-11-11T16:44:21.976+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 65 for task telechargement_fichier1 (Bash command failed. The command returned a non-zero exit code 2.; 24718)
+[2023-11-11T16:44:22.009+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-11T16:44:22.032+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

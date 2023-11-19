@@ -1,0 +1,13 @@
+[2023-11-11T14:42:05.666+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ProjetETL.extraction_fichier3 manual__2023-11-11T14:41:52.863981+00:00 [queued]>
+[2023-11-11T14:42:05.684+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ProjetETL.extraction_fichier3 manual__2023-11-11T14:41:52.863981+00:00 [queued]>
+[2023-11-11T14:42:05.686+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-11T14:42:05.711+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): extraction_fichier3> on 2023-11-11 14:41:52.863981+00:00
+[2023-11-11T14:42:05.723+0000] {standard_task_runner.py:57} INFO - Started process 23306 to run task
+[2023-11-11T14:42:05.730+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ProjetETL', 'extraction_fichier3', 'manual__2023-11-11T14:41:52.863981+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmp5q0z9bdb']
+[2023-11-11T14:42:05.734+0000] {standard_task_runner.py:85} INFO - Job 54: Subtask extraction_fichier3
+[2023-11-11T14:42:05.829+0000] {task_command.py:416} INFO - Running <TaskInstance: ProjetETL.extraction_fichier3 manual__2023-11-11T14:41:52.863981+00:00 [running]> on host fb26c01043df
+[2023-11-11T14:42:06.002+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ProjetETL' AIRFLOW_CTX_TASK_ID='extraction_fichier3' AIRFLOW_CTX_EXECUTION_DATE='2023-11-11T14:41:52.863981+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-11T14:41:52.863981+00:00'
+[2023-11-11T14:42:06.013+0000] {python.py:194} INFO - Done. Returned value was: Erreur lors de l'extraction du fichier : [Errno 2] No such file or directory: 'Users/celinahamzaoui/Desktop/Cours_Sup_de_vinci/Datawarehouse/TP3/TP_Airflow/data/donnees-urgences-SOS-medecins.csv'
+[2023-11-11T14:42:06.056+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ProjetETL, task_id=extraction_fichier3, execution_date=20231111T144152, start_date=20231111T144205, end_date=20231111T144206
+[2023-11-11T14:42:06.106+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-11T14:42:06.139+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

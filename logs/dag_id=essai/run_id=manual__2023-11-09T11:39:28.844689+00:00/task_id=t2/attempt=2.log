@@ -1,0 +1,20 @@
+[2023-11-09T11:45:40.630+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: essai.t2 manual__2023-11-09T11:39:28.844689+00:00 [queued]>
+[2023-11-09T11:45:40.730+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: essai.t2 manual__2023-11-09T11:39:28.844689+00:00 [queued]>
+[2023-11-09T11:45:40.736+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2023-11-09T11:45:40.856+0000] {taskinstance.py:1382} INFO - Executing <Task(_PythonDecoratedOperator): t2> on 2023-11-09 11:39:28.844689+00:00
+[2023-11-09T11:45:40.880+0000] {standard_task_runner.py:57} INFO - Started process 8124 to run task
+[2023-11-09T11:45:40.893+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'essai', 't2', 'manual__2023-11-09T11:39:28.844689+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/Part1.py', '--cfg-path', '/tmp/tmp7swwolay']
+[2023-11-09T11:45:40.965+0000] {standard_task_runner.py:85} INFO - Job 30: Subtask t2
+[2023-11-09T11:45:41.364+0000] {task_command.py:416} INFO - Running <TaskInstance: essai.t2 manual__2023-11-09T11:39:28.844689+00:00 [running]> on host fb26c01043df
+[2023-11-09T11:45:41.733+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='essai' AIRFLOW_CTX_TASK_ID='t2' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T11:39:28.844689+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-09T11:39:28.844689+00:00'
+[2023-11-09T11:45:43.036+0000] {logging_mixin.py:151} INFO - jaweek hlow
+[2023-11-09T11:45:43.229+0000] {logging_mixin.py:151} INFO - Empty DataFrame
+Columns: [Code commune, prix_moyen]
+Index: []
+[2023-11-09T11:45:43.233+0000] {logging_mixin.py:151} INFO - jaweek behy
+[2023-11-09T11:45:43.235+0000] {python.py:194} INFO - Done. Returned value was: Empty DataFrame
+Columns: [Code commune, prix_moyen]
+Index: []
+[2023-11-09T11:45:44.381+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=essai, task_id=t2, execution_date=20231109T113928, start_date=20231109T114540, end_date=20231109T114544
+[2023-11-09T11:45:44.494+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-09T11:45:44.641+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

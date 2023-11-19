@@ -1,0 +1,33 @@
+[2023-11-09T11:14:45.327+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: essai.test manual__2023-11-09T11:10:32.613246+00:00 [queued]>
+[2023-11-09T11:14:45.340+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: essai.test manual__2023-11-09T11:10:32.613246+00:00 [queued]>
+[2023-11-09T11:14:45.341+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-09T11:14:45.358+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): test> on 2023-11-09 11:10:32.613246+00:00
+[2023-11-09T11:14:45.367+0000] {standard_task_runner.py:57} INFO - Started process 7670 to run task
+[2023-11-09T11:14:45.370+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'essai', 'test', 'manual__2023-11-09T11:10:32.613246+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/Part1.py', '--cfg-path', '/tmp/tmpx_fv_wa7']
+[2023-11-09T11:14:45.372+0000] {standard_task_runner.py:85} INFO - Job 13: Subtask test
+[2023-11-09T11:14:45.429+0000] {task_command.py:416} INFO - Running <TaskInstance: essai.test manual__2023-11-09T11:10:32.613246+00:00 [running]> on host fb26c01043df
+[2023-11-09T11:14:45.528+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='essai' AIRFLOW_CTX_TASK_ID='test' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T11:10:32.613246+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-09T11:10:32.613246+00:00'
+[2023-11-09T11:14:45.532+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-09T11:14:45.533+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl --keepalive-time 600 -o ${AIRFLOW_HOME}/data/valeurs_foncieres.txt https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20231010-093059/valeursfoncieres-2022.txt ; echo "jawek behy si dawed "']
+[2023-11-09T11:14:45.546+0000] {subprocess.py:86} INFO - Output:
+[2023-11-09T11:14:45.562+0000] {subprocess.py:93} INFO -   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[2023-11-09T11:14:45.563+0000] {subprocess.py:93} INFO -                                  Dload  Upload   Total   Spent    Left  Speed
+[2023-11-09T11:15:00.579+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to restarting. Terminating instance.
+[2023-11-09T11:15:00.598+0000] {process_utils.py:131} INFO - Sending 15 to group 7670. PIDs of all processes in the group: [7671, 7672, 7670]
+[2023-11-09T11:15:00.599+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 7670
+[2023-11-09T11:15:00.605+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-11-09T11:15:00.612+0000] {subprocess.py:104} INFO - Sending SIGTERM signal to process group
+[2023-11-09T11:15:00.630+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=7672, status='terminated', started='11:14:44') (7672) terminated with exit code None
+[2023-11-09T11:15:00.684+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 201, in execute
+    result = self.subprocess_hook.run_command(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/hooks/subprocess.py", line 91, in run_command
+    for raw_line in iter(self.sub_process.stdout.readline, b""):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1634, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-11-09T11:15:00.707+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=essai, task_id=test, execution_date=20231109T111032, start_date=20231109T111445, end_date=20231109T111500
+[2023-11-09T11:15:00.857+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 13 for task test (Task received SIGTERM signal; 7670)
+[2023-11-09T11:15:01.132+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=7670, status='terminated', exitcode=1, started='11:14:44') (7670) terminated with exit code 1
+[2023-11-09T11:15:01.159+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=7671, status='terminated', started='11:14:44') (7671) terminated with exit code None

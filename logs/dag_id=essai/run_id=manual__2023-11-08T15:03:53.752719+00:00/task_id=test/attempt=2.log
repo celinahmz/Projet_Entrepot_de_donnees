@@ -1,0 +1,23 @@
+[2023-11-08T15:07:20.344+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: essai.test manual__2023-11-08T15:03:53.752719+00:00 [queued]>
+[2023-11-08T15:07:20.353+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: essai.test manual__2023-11-08T15:03:53.752719+00:00 [queued]>
+[2023-11-08T15:07:20.354+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2023-11-08T15:07:20.367+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): test> on 2023-11-08 15:03:53.752719+00:00
+[2023-11-08T15:07:20.373+0000] {standard_task_runner.py:57} INFO - Started process 285 to run task
+[2023-11-08T15:07:20.377+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'essai', 'test', 'manual__2023-11-08T15:03:53.752719+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/yarabi.py', '--cfg-path', '/tmp/tmpetb_dpx0']
+[2023-11-08T15:07:20.381+0000] {standard_task_runner.py:85} INFO - Job 8: Subtask test
+[2023-11-08T15:07:20.440+0000] {task_command.py:416} INFO - Running <TaskInstance: essai.test manual__2023-11-08T15:03:53.752719+00:00 [running]> on host a50cf6f085c6
+[2023-11-08T15:07:20.526+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='essai' AIRFLOW_CTX_TASK_ID='test' AIRFLOW_CTX_EXECUTION_DATE='2023-11-08T15:03:53.752719+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-08T15:03:53.752719+00:00'
+[2023-11-08T15:07:20.533+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-08T15:07:20.534+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl --keepalive-time 600 -o ${AIRFLOW_HOME}/data/valeurs_foncieres.txt https://static.data.gouv.fr/resources/demandesde-valeurs-foncieres/20231010-093059/valeursfoncieres-2022.txt ; echo "jawek behy "']
+[2023-11-08T15:07:20.546+0000] {subprocess.py:86} INFO - Output:
+[2023-11-08T15:07:20.559+0000] {subprocess.py:93} INFO -   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[2023-11-08T15:07:20.559+0000] {subprocess.py:93} INFO -                                  Dload  Upload   Total   Spent    Left  Speed
+[2023-11-08T15:07:20.649+0000] {subprocess.py:93} INFO -   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0Warning: Failed to create the file /opt/***/data/valeurs_foncieres.txt: No
+[2023-11-08T15:07:20.651+0000] {subprocess.py:93} INFO - Warning: such file or directory
+[2023-11-08T15:07:20.653+0000] {subprocess.py:93} INFO - 100   146  100   146    0     0   1622      0 --:--:-- --:--:-- --:--:--  1622
+[2023-11-08T15:07:20.654+0000] {subprocess.py:93} INFO - curl: (23) Failure writing output to destination
+[2023-11-08T15:07:20.655+0000] {subprocess.py:93} INFO - jawek behy
+[2023-11-08T15:07:20.657+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-11-08T15:07:20.696+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=essai, task_id=test, execution_date=20231108T150353, start_date=20231108T150720, end_date=20231108T150720
+[2023-11-08T15:07:20.753+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-08T15:07:20.781+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

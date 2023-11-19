@@ -1,0 +1,30 @@
+[2023-11-15T16:40:47.709+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-15T16:40:45.169454+00:00 [queued]>
+[2023-11-15T16:40:47.719+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-15T16:40:45.169454+00:00 [queued]>
+[2023-11-15T16:40:47.720+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-15T16:40:47.738+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-15 16:40:45.169454+00:00
+[2023-11-15T16:40:47.747+0000] {standard_task_runner.py:57} INFO - Started process 54029 to run task
+[2023-11-15T16:40:47.751+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-15T16:40:45.169454+00:00', '--job-id', '189', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpz2jxf9at']
+[2023-11-15T16:40:47.753+0000] {standard_task_runner.py:85} INFO - Job 189: Subtask Extract
+[2023-11-15T16:40:47.808+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-15T16:40:45.169454+00:00 [running]> on host fb26c01043df
+[2023-11-15T16:40:47.893+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-15T16:40:45.169454+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-15T16:40:45.169454+00:00'
+[2023-11-15T16:40:48.121+0000] {logging_mixin.py:151} INFO -   Code tranches d'age;Age
+0            0; tous âges
+1               1;0-4 ans
+2              2;5-14 ans
+3             3;15-44 ans
+4             4;45-64 ans
+5             5;65-74 ans
+6        6;75 ans ou plus
+[2023-11-15T16:40:48.122+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Projet.py", line 23, in extract_data
+    with open(json_file_path_departements, 'r',encoding="UTF-8", sep=',') as json_file:
+TypeError: 'sep' is an invalid keyword argument for open()
+[2023-11-15T16:40:48.132+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=Extract, execution_date=20231115T164045, start_date=20231115T164047, end_date=20231115T164048
+[2023-11-15T16:40:48.144+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 189 for task Extract ('sep' is an invalid keyword argument for open(); 54029)
+[2023-11-15T16:40:48.166+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-15T16:40:48.191+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

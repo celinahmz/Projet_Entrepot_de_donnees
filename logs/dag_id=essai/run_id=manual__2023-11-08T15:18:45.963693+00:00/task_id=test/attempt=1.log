@@ -1,0 +1,20 @@
+[2023-11-08T15:18:50.348+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: essai.test manual__2023-11-08T15:18:45.963693+00:00 [queued]>
+[2023-11-08T15:18:50.361+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: essai.test manual__2023-11-08T15:18:45.963693+00:00 [queued]>
+[2023-11-08T15:18:50.362+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-08T15:18:50.380+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): test> on 2023-11-08 15:18:45.963693+00:00
+[2023-11-08T15:18:50.395+0000] {standard_task_runner.py:57} INFO - Started process 71 to run task
+[2023-11-08T15:18:50.399+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'essai', 'test', 'manual__2023-11-08T15:18:45.963693+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/yarabi.py', '--cfg-path', '/tmp/tmpz8fblc3f']
+[2023-11-08T15:18:50.405+0000] {standard_task_runner.py:85} INFO - Job 3: Subtask test
+[2023-11-08T15:18:50.472+0000] {task_command.py:416} INFO - Running <TaskInstance: essai.test manual__2023-11-08T15:18:45.963693+00:00 [running]> on host fb26c01043df
+[2023-11-08T15:18:50.554+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='essai' AIRFLOW_CTX_TASK_ID='test' AIRFLOW_CTX_EXECUTION_DATE='2023-11-08T15:18:45.963693+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-08T15:18:45.963693+00:00'
+[2023-11-08T15:18:50.565+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-08T15:18:50.566+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'curl --keepalive-time 600 -o ${AIRFLOW_HOME}/data/valeurs_foncieres.txt https://static.data.gouv.fr/resources/demandesde-valeurs-foncieres/20231010-093059/valeursfoncieres-2022.txt ; echo "jawek behy "']
+[2023-11-08T15:18:50.582+0000] {subprocess.py:86} INFO - Output:
+[2023-11-08T15:18:50.618+0000] {subprocess.py:93} INFO -   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+[2023-11-08T15:18:50.618+0000] {subprocess.py:93} INFO -                                  Dload  Upload   Total   Spent    Left  Speed
+[2023-11-08T15:18:50.765+0000] {subprocess.py:93} INFO -   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   146  100   146    0     0    993      0 --:--:-- --:--:-- --:--:--  1000
+[2023-11-08T15:18:50.771+0000] {subprocess.py:93} INFO - jawek behy
+[2023-11-08T15:18:50.773+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-11-08T15:18:50.823+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=essai, task_id=test, execution_date=20231108T151845, start_date=20231108T151850, end_date=20231108T151850
+[2023-11-08T15:18:50.854+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-08T15:18:50.873+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

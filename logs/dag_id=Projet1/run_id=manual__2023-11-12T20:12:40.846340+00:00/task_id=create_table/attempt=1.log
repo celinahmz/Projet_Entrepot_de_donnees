@@ -1,0 +1,29 @@
+[2023-11-12T20:12:44.356+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.create_table manual__2023-11-12T20:12:40.846340+00:00 [queued]>
+[2023-11-12T20:12:44.366+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.create_table manual__2023-11-12T20:12:40.846340+00:00 [queued]>
+[2023-11-12T20:12:44.367+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-12T20:12:44.385+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_table> on 2023-11-12 20:12:40.846340+00:00
+[2023-11-12T20:12:44.391+0000] {standard_task_runner.py:57} INFO - Started process 32895 to run task
+[2023-11-12T20:12:44.396+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'create_table', 'manual__2023-11-12T20:12:40.846340+00:00', '--job-id', '134', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmphbnstnws']
+[2023-11-12T20:12:44.397+0000] {standard_task_runner.py:85} INFO - Job 134: Subtask create_table
+[2023-11-12T20:12:44.455+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.create_table manual__2023-11-12T20:12:40.846340+00:00 [running]> on host fb26c01043df
+[2023-11-12T20:12:44.550+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2023-11-12T20:12:40.846340+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-12T20:12:40.846340+00:00'
+[2023-11-12T20:12:44.554+0000] {sql.py:274} INFO - Executing: CREATE TABLE IF NOT EXISTS analyse_prix(
+      code_commune VARCHAR(10),
+      prix_moyen FLOAT
+    );
+
+Select *
+From analyse_prix
+[2023-11-12T20:12:44.565+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-12T20:12:44.575+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-12T20:12:44.594+0000] {sql.py:418} INFO - Running statement: CREATE TABLE IF NOT EXISTS analyse_prix(
+      code_commune VARCHAR(10),
+      prix_moyen FLOAT
+    );
+
+Select *
+From analyse_prix, parameters: None
+[2023-11-12T20:12:44.612+0000] {sql.py:427} INFO - Rows affected: 0
+[2023-11-12T20:12:44.652+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Projet1, task_id=create_table, execution_date=20231112T201240, start_date=20231112T201244, end_date=20231112T201244
+[2023-11-12T20:12:44.694+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-12T20:12:44.720+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

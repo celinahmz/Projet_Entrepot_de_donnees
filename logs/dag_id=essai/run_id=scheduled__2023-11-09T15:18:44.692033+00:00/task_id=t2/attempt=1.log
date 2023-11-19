@@ -1,0 +1,25 @@
+[2023-11-10T15:18:57.914+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: essai.t2 scheduled__2023-11-09T15:18:44.692033+00:00 [queued]>
+[2023-11-10T15:18:57.967+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: essai.t2 scheduled__2023-11-09T15:18:44.692033+00:00 [queued]>
+[2023-11-10T15:18:57.970+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-10T15:18:58.030+0000] {taskinstance.py:1382} INFO - Executing <Task(_PythonDecoratedOperator): t2> on 2023-11-09 15:18:44.692033+00:00
+[2023-11-10T15:18:58.072+0000] {standard_task_runner.py:57} INFO - Started process 20259 to run task
+[2023-11-10T15:18:58.080+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'essai', 't2', 'scheduled__2023-11-09T15:18:44.692033+00:00', '--job-id', '40', '--raw', '--subdir', 'DAGS_FOLDER/Part1.py', '--cfg-path', '/tmp/tmpbbspz6lf']
+[2023-11-10T15:18:58.086+0000] {standard_task_runner.py:85} INFO - Job 40: Subtask t2
+[2023-11-10T15:18:58.510+0000] {task_command.py:416} INFO - Running <TaskInstance: essai.t2 scheduled__2023-11-09T15:18:44.692033+00:00 [running]> on host fb26c01043df
+[2023-11-10T15:18:59.437+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='***@example.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='essai' AIRFLOW_CTX_TASK_ID='t2' AIRFLOW_CTX_EXECUTION_DATE='2023-11-09T15:18:44.692033+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-09T15:18:44.692033+00:00'
+[2023-11-10T15:18:59.812+0000] {logging_mixin.py:151} INFO - jaweek hlow
+[2023-11-10T15:18:59.832+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/decorators/base.py", line 221, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Part1.py", line 24, in data_transform
+    data = data[data['Type local'] == 'appartement']
+UnboundLocalError: local variable 'data' referenced before assignment
+[2023-11-10T15:19:00.105+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=essai, task_id=t2, execution_date=20231109T151844, start_date=20231110T151857, end_date=20231110T151900
+[2023-11-10T15:19:00.362+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 40 for task t2 (local variable 'data' referenced before assignment; 20259)
+[2023-11-10T15:19:00.453+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-10T15:19:00.581+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
