@@ -27,6 +27,8 @@ def extract_data():
      #pour le nettoyages des dates soit on va les supprimer ou on va  les laisser mais avec une date specifique : 
     df_urgences['date_de_passage'].fillna('1999-01-01', inplace=True) 
     print('hello')
+    df_urgences['dep'] = df_urgences['dep'].astype(str)
+
 
 #Fichier departements 
     json_file_path_departements = os.path.expandvars("${AIRFLOW_HOME}/data/departements-region.json")
@@ -46,10 +48,17 @@ def extract_data():
     df_age["Code tranches d'age"] = df_age["Code tranches d'age"].astype(str)
     df_age['Age'] = df_age['Age'].astype(str)
 
+#Alimentation de l'entrepôt 
+    postgres_sql_upload = PostgresHook(postgres_conn_id="postgres_connexion")
+    df_departements.to_sql('Departements', postgres_sql_upload.get_sqlalchemy_engine(), if_exists='replace', chunksize=1000)
+
+    postgres_sql_upload = PostgresHook(postgres_conn_id="postgres_connexion")
+    df_urgences.to_sql('Urgences', postgres_sql_upload.get_sqlalchemy_engine(), if_exists='replace', chunksize=1000)
+
+    postgres_sql_upload = PostgresHook(postgres_conn_id="postgres_connexion")
+    df_age.to_sql('Age', postgres_sql_upload.get_sqlalchemy_engine(), if_exists='replace', chunksize=1000)
 
     
-
-
     
 default_args = {
     'owner': 'airflow',
@@ -73,7 +82,8 @@ with DAG(
     postgres_conn_id='postgres_connexion',
     sql='sql/create_table.sql'
     )
-
+   
+    
 
 
     create_table >> extract 

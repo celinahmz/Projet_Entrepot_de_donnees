@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS "Urgences"(
-    id_departememnt INTEGER,
-    sursaud_cl_age_corona FLOAT, 
+    dep VARCHAR(255),
+    sursaud_cl_age_corona VARCHAR(255), 
     nbre_pass_corona FLOAT, 
     nbre_pass_tot FLOAT, 
     nbre_hospit_corona FLOAT,
@@ -18,15 +18,19 @@ CREATE TABLE IF NOT EXISTS "Urgences"(
     nbre_acte_tot_f FLOAT
 );
 
-  CREATE TABLE IF NOT EXISTS "Departements"
+CREATE TABLE IF NOT EXISTS "Departements"
 (
     num_dep VARCHAR(255),
     dep_name VARCHAR(255),
-    region_name  VARCHAR(255)
+    region_name VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS "Age"
 (
-   code_age VARCHAR(255),
+   Code_age VARCHAR(255),
    age VARCHAR(255)
 );
+
+
+
+
