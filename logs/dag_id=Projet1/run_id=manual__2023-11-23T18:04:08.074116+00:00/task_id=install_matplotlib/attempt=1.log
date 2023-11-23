@@ -1,0 +1,109 @@
+[2023-11-23T18:04:13.064+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.install_matplotlib manual__2023-11-23T18:04:08.074116+00:00 [queued]>
+[2023-11-23T18:04:13.083+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.install_matplotlib manual__2023-11-23T18:04:08.074116+00:00 [queued]>
+[2023-11-23T18:04:13.084+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T18:04:13.130+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): install_matplotlib> on 2023-11-23 18:04:08.074116+00:00
+[2023-11-23T18:04:13.137+0000] {standard_task_runner.py:57} INFO - Started process 233 to run task
+[2023-11-23T18:04:13.142+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'install_matplotlib', 'manual__2023-11-23T18:04:08.074116+00:00', '--job-id', '617', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpnj5twmhc']
+[2023-11-23T18:04:13.145+0000] {standard_task_runner.py:85} INFO - Job 617: Subtask install_matplotlib
+[2023-11-23T18:04:13.248+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.install_matplotlib manual__2023-11-23T18:04:08.074116+00:00 [running]> on host b36ebcee5948
+[2023-11-23T18:04:13.388+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='install_matplotlib' AIRFLOW_CTX_EXECUTION_DATE='2023-11-23T18:04:08.074116+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-23T18:04:08.074116+00:00'
+[2023-11-23T18:04:13.395+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-23T18:04:13.396+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'pip install matplotlib']
+[2023-11-23T18:04:13.408+0000] {subprocess.py:86} INFO - Output:
+[2023-11-23T18:04:15.778+0000] {subprocess.py:93} INFO - Defaulting to user installation because normal site-packages is not writeable
+[2023-11-23T18:04:17.154+0000] {subprocess.py:93} INFO - Collecting matplotlib
+[2023-11-23T18:04:17.787+0000] {subprocess.py:93} INFO -   Downloading matplotlib-3.7.4-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.2 MB)
+[2023-11-23T18:10:46.390+0000] {subprocess.py:93} INFO -      ━━━━━━━━━━━━━━━━━━━━━━━╸                 5.4/9.2 MB 20.3 kB/s eta 0:03:06
+[2023-11-23T18:10:46.405+0000] {subprocess.py:93} INFO - ERROR: Exception:
+[2023-11-23T18:10:46.405+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2023-11-23T18:10:46.406+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+[2023-11-23T18:10:46.406+0000] {subprocess.py:93} INFO -     yield
+[2023-11-23T18:10:46.407+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+[2023-11-23T18:10:46.407+0000] {subprocess.py:93} INFO -     data = self._fp_read(amt) if not fp_closed else b""
+[2023-11-23T18:10:46.408+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+[2023-11-23T18:10:46.408+0000] {subprocess.py:93} INFO -     return self._fp.read(amt) if amt is not None else self._fp.read()
+[2023-11-23T18:10:46.408+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 90, in read
+[2023-11-23T18:10:46.409+0000] {subprocess.py:93} INFO -     data = self.__fp.read(amt)
+[2023-11-23T18:10:46.409+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/http/client.py", line 459, in read
+[2023-11-23T18:10:46.410+0000] {subprocess.py:93} INFO -     n = self.readinto(b)
+[2023-11-23T18:10:46.411+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/http/client.py", line 503, in readinto
+[2023-11-23T18:10:46.411+0000] {subprocess.py:93} INFO -     n = self.fp.readinto(b)
+[2023-11-23T18:10:46.412+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/socket.py", line 669, in readinto
+[2023-11-23T18:10:46.412+0000] {subprocess.py:93} INFO -     return self._sock.recv_into(b)
+[2023-11-23T18:10:46.413+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/ssl.py", line 1274, in recv_into
+[2023-11-23T18:10:46.414+0000] {subprocess.py:93} INFO -     return self.read(nbytes, buffer)
+[2023-11-23T18:10:46.414+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/ssl.py", line 1132, in read
+[2023-11-23T18:10:46.415+0000] {subprocess.py:93} INFO -     return self._sslobj.read(len, buffer)
+[2023-11-23T18:10:46.416+0000] {subprocess.py:93} INFO - socket.timeout: The read operation timed out
+[2023-11-23T18:10:46.416+0000] {subprocess.py:93} INFO - 
+[2023-11-23T18:10:46.417+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2023-11-23T18:10:46.418+0000] {subprocess.py:93} INFO - 
+[2023-11-23T18:10:46.418+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2023-11-23T18:10:46.419+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/cli/base_command.py", line 160, in exc_logging_wrapper
+[2023-11-23T18:10:46.419+0000] {subprocess.py:93} INFO -     status = run_func(*args)
+[2023-11-23T18:10:46.420+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/cli/req_command.py", line 247, in wrapper
+[2023-11-23T18:10:46.421+0000] {subprocess.py:93} INFO -     return func(self, options, args)
+[2023-11-23T18:10:46.421+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/commands/install.py", line 419, in run
+[2023-11-23T18:10:46.422+0000] {subprocess.py:93} INFO -     requirement_set = resolver.resolve(
+[2023-11-23T18:10:46.422+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 92, in resolve
+[2023-11-23T18:10:46.423+0000] {subprocess.py:93} INFO -     result = self._result = resolver.resolve(
+[2023-11-23T18:10:46.423+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/resolvelib/resolvers.py", line 481, in resolve
+[2023-11-23T18:10:46.424+0000] {subprocess.py:93} INFO -     state = resolution.resolve(requirements, max_rounds=max_rounds)
+[2023-11-23T18:10:46.424+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/resolvelib/resolvers.py", line 348, in resolve
+[2023-11-23T18:10:46.425+0000] {subprocess.py:93} INFO -     self._add_to_criteria(self.state.criteria, r, parent=None)
+[2023-11-23T18:10:46.426+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/resolvelib/resolvers.py", line 172, in _add_to_criteria
+[2023-11-23T18:10:46.427+0000] {subprocess.py:93} INFO -     if not criterion.candidates:
+[2023-11-23T18:10:46.427+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/resolvelib/structs.py", line 151, in __bool__
+[2023-11-23T18:10:46.428+0000] {subprocess.py:93} INFO -     return bool(self._sequence)
+[2023-11-23T18:10:46.429+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 155, in __bool__
+[2023-11-23T18:10:46.430+0000] {subprocess.py:93} INFO -     return any(self)
+[2023-11-23T18:10:46.431+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 143, in <genexpr>
+[2023-11-23T18:10:46.431+0000] {subprocess.py:93} INFO -     return (c for c in iterator if id(c) not in self._incompatible_ids)
+[2023-11-23T18:10:46.432+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py", line 47, in _iter_built
+[2023-11-23T18:10:46.433+0000] {subprocess.py:93} INFO -     candidate = func()
+[2023-11-23T18:10:46.433+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/factory.py", line 206, in _make_candidate_from_link
+[2023-11-23T18:10:46.434+0000] {subprocess.py:93} INFO -     self._link_candidate_cache[link] = LinkCandidate(
+[2023-11-23T18:10:46.435+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 297, in __init__
+[2023-11-23T18:10:46.435+0000] {subprocess.py:93} INFO -     super().__init__(
+[2023-11-23T18:10:46.436+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 162, in __init__
+[2023-11-23T18:10:46.437+0000] {subprocess.py:93} INFO -     self.dist = self._prepare()
+[2023-11-23T18:10:46.438+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 231, in _prepare
+[2023-11-23T18:10:46.438+0000] {subprocess.py:93} INFO -     dist = self._prepare_distribution()
+[2023-11-23T18:10:46.439+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/candidates.py", line 308, in _prepare_distribution
+[2023-11-23T18:10:46.439+0000] {subprocess.py:93} INFO -     return preparer.prepare_linked_requirement(self._ireq, parallel_builds=True)
+[2023-11-23T18:10:46.440+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 491, in prepare_linked_requirement
+[2023-11-23T18:10:46.440+0000] {subprocess.py:93} INFO -     return self._prepare_linked_requirement(req, parallel_builds)
+[2023-11-23T18:10:46.441+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 536, in _prepare_linked_requirement
+[2023-11-23T18:10:46.441+0000] {subprocess.py:93} INFO -     local_file = unpack_url(
+[2023-11-23T18:10:46.442+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 166, in unpack_url
+[2023-11-23T18:10:46.442+0000] {subprocess.py:93} INFO -     file = get_http_url(
+[2023-11-23T18:10:46.443+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 107, in get_http_url
+[2023-11-23T18:10:46.443+0000] {subprocess.py:93} INFO -     from_path, content_type = download(link, temp_dir.path)
+[2023-11-23T18:10:46.444+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/network/download.py", line 147, in __call__
+[2023-11-23T18:10:46.445+0000] {subprocess.py:93} INFO -     for chunk in chunks:
+[2023-11-23T18:10:46.445+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/cli/progress_bars.py", line 53, in _rich_progress_bar
+[2023-11-23T18:10:46.446+0000] {subprocess.py:93} INFO -     for chunk in iterable:
+[2023-11-23T18:10:46.446+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_internal/network/utils.py", line 63, in response_chunks
+[2023-11-23T18:10:46.447+0000] {subprocess.py:93} INFO -     for chunk in response.raw.stream(
+[2023-11-23T18:10:46.448+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+[2023-11-23T18:10:46.448+0000] {subprocess.py:93} INFO -     data = self.read(amt=amt, decode_content=decode_content)
+[2023-11-23T18:10:46.449+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 587, in read
+[2023-11-23T18:10:46.450+0000] {subprocess.py:93} INFO -     raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+[2023-11-23T18:10:46.451+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/contextlib.py", line 131, in __exit__
+[2023-11-23T18:10:46.451+0000] {subprocess.py:93} INFO -     self.gen.throw(type, value, traceback)
+[2023-11-23T18:10:46.452+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+[2023-11-23T18:10:46.453+0000] {subprocess.py:93} INFO -     raise ReadTimeoutError(self._pool, None, "Read timed out.")
+[2023-11-23T18:10:46.453+0000] {subprocess.py:93} INFO - pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+[2023-11-23T18:10:46.454+0000] {subprocess.py:93} INFO - 
+[2023-11-23T18:10:46.454+0000] {subprocess.py:93} INFO - [notice] A new release of pip is available: 23.0.1 -> 23.3.1
+[2023-11-23T18:10:46.454+0000] {subprocess.py:93} INFO - [notice] To update, run: pip install --upgrade pip
+[2023-11-23T18:10:46.627+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2023-11-23T18:10:46.663+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 210, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2023-11-23T18:10:46.672+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=install_matplotlib, execution_date=20231123T180408, start_date=20231123T180413, end_date=20231123T181046
+[2023-11-23T18:10:46.712+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 617 for task install_matplotlib (Bash command failed. The command returned a non-zero exit code 2.; 233)
+[2023-11-23T18:10:46.754+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-23T18:10:46.802+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

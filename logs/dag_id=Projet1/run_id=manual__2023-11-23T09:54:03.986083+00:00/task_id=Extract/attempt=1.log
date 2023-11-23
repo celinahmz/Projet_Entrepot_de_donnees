@@ -1,0 +1,95 @@
+[2023-11-23T09:54:08.538+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T09:54:03.986083+00:00 [queued]>
+[2023-11-23T09:54:08.551+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T09:54:03.986083+00:00 [queued]>
+[2023-11-23T09:54:08.552+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T09:54:08.566+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-23 09:54:03.986083+00:00
+[2023-11-23T09:54:08.572+0000] {standard_task_runner.py:57} INFO - Started process 457 to run task
+[2023-11-23T09:54:08.575+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-23T09:54:03.986083+00:00', '--job-id', '459', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpoxrdzpr0']
+[2023-11-23T09:54:08.577+0000] {standard_task_runner.py:85} INFO - Job 459: Subtask Extract
+[2023-11-23T09:54:08.624+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-23T09:54:03.986083+00:00 [running]> on host b36ebcee5948
+[2023-11-23T09:54:08.707+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-23T09:54:03.986083+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-23T09:54:03.986083+00:00'
+[2023-11-23T09:54:08.945+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:17: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences,  delimiter=';' )
+
+[2023-11-23T09:54:09.374+0000] {logging_mixin.py:151} INFO -      num_dep                 dep_name                 region_name
+0          1                      Ain        Auvergne-Rhône-Alpes
+1          2                    Aisne             Hauts-de-France
+2          3                   Allier        Auvergne-Rhône-Alpes
+3          4  Alpes-de-Haute-Provence  Provence-Alpes-Côte d'Azur
+4          5             Hautes-Alpes  Provence-Alpes-Côte d'Azur
+..       ...                      ...                         ...
+96       971               Guadeloupe                  Guadeloupe
+97       972               Martinique                  Martinique
+98       973                   Guyane                      Guyane
+99       974               La Réunion                  La Réunion
+100      976                  Mayotte                     Mayotte
+
+[101 rows x 3 columns]
+[2023-11-23T09:54:09.387+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T09:54:09.414+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.NotNullViolation: null value in column "num_dep" of relation "Departements" violates not-null constraint
+DETAIL:  Failing row contains (null, Corse-du-Sud, Corse).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Projet.py", line 83, in extract_data
+    df_departements.to_sql('Departements', postgres_sql_upload.get_sqlalchemy_engine(), if_exists='append', chunksize=1000, index=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 2878, in to_sql
+    return sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 769, in to_sql
+    return pandas_sql.to_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1920, in to_sql
+    total_inserted = sql_engine.insert_records(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1470, in insert_records
+    raise err
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1461, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 1023, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/sql.py", line 929, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "num_dep" of relation "Departements" violates not-null constraint
+DETAIL:  Failing row contains (null, Corse-du-Sud, Corse).
+
+[SQL: INSERT INTO "Departements" (num_dep, dep_name, region_name) VALUES (%(num_dep)s, %(dep_name)s, %(region_name)s)]
+[parameters: ({'num_dep': 1, 'dep_name': 'Ain', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 2, 'dep_name': 'Aisne', 'region_name': 'Hauts-de-France'}, {'num_dep': 3, 'dep_name': 'Allier', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 4, 'dep_name': 'Alpes-de-Haute-Provence', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 5, 'dep_name': 'Hautes-Alpes', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 6, 'dep_name': 'Alpes-Maritimes', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 7, 'dep_name': 'Ardèche', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 8, 'dep_name': 'Ardennes', 'region_name': 'Grand Est'}  ... displaying 10 of 101 total bound parameter sets ...  {'num_dep': 974, 'dep_name': 'La Réunion', 'region_name': 'La Réunion'}, {'num_dep': 976, 'dep_name': 'Mayotte', 'region_name': 'Mayotte'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-11-23T09:54:09.428+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=Extract, execution_date=20231123T095403, start_date=20231123T095408, end_date=20231123T095409
+[2023-11-23T09:54:09.439+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 459 for task Extract ((psycopg2.errors.NotNullViolation) null value in column "num_dep" of relation "Departements" violates not-null constraint
+DETAIL:  Failing row contains (null, Corse-du-Sud, Corse).
+
+[SQL: INSERT INTO "Departements" (num_dep, dep_name, region_name) VALUES (%(num_dep)s, %(dep_name)s, %(region_name)s)]
+[parameters: ({'num_dep': 1, 'dep_name': 'Ain', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 2, 'dep_name': 'Aisne', 'region_name': 'Hauts-de-France'}, {'num_dep': 3, 'dep_name': 'Allier', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 4, 'dep_name': 'Alpes-de-Haute-Provence', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 5, 'dep_name': 'Hautes-Alpes', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 6, 'dep_name': 'Alpes-Maritimes', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 7, 'dep_name': 'Ardèche', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 8, 'dep_name': 'Ardennes', 'region_name': 'Grand Est'}  ... displaying 10 of 101 total bound parameter sets ...  {'num_dep': 974, 'dep_name': 'La Réunion', 'region_name': 'La Réunion'}, {'num_dep': 976, 'dep_name': 'Mayotte', 'region_name': 'Mayotte'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 457)
+[2023-11-23T09:54:09.472+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-23T09:54:09.489+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

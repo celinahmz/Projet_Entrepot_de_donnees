@@ -1,0 +1,36 @@
+[2023-11-23T10:31:57.315+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T10:31:53.444389+00:00 [queued]>
+[2023-11-23T10:31:57.325+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T10:31:53.444389+00:00 [queued]>
+[2023-11-23T10:31:57.326+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T10:31:57.341+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-23 10:31:53.444389+00:00
+[2023-11-23T10:31:57.346+0000] {standard_task_runner.py:57} INFO - Started process 1110 to run task
+[2023-11-23T10:31:57.349+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-23T10:31:53.444389+00:00', '--job-id', '487', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpy_se4ukt']
+[2023-11-23T10:31:57.351+0000] {standard_task_runner.py:85} INFO - Job 487: Subtask Extract
+[2023-11-23T10:31:57.400+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-23T10:31:53.444389+00:00 [running]> on host b36ebcee5948
+[2023-11-23T10:31:57.491+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-23T10:31:53.444389+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-23T10:31:53.444389+00:00'
+[2023-11-23T10:31:57.702+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:17: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences,  delimiter=';' )
+
+[2023-11-23T10:31:58.012+0000] {logging_mixin.py:151} INFO - 101
+[2023-11-23T10:31:58.015+0000] {logging_mixin.py:151} INFO - 99
+[2023-11-23T10:31:58.030+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T10:31:58.068+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T10:31:58.077+0000] {sql.py:418} INFO - Running statement: DROP TABLE  Urgences , parameters: None
+[2023-11-23T10:31:58.079+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Projet.py", line 99, in extract_data
+    postgres_sql_upload.run("DROP TABLE  Urgences ")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 392, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 423, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.UndefinedTable: table "urgences" does not exist
+
+[2023-11-23T10:31:58.090+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=Extract, execution_date=20231123T103153, start_date=20231123T103157, end_date=20231123T103158
+[2023-11-23T10:31:58.104+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 487 for task Extract (table "urgences" does not exist
+; 1110)
+[2023-11-23T10:31:58.126+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-23T10:31:58.148+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

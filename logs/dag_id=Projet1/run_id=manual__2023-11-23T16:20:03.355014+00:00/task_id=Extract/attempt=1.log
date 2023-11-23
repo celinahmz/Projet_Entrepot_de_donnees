@@ -1,0 +1,50 @@
+[2023-11-23T16:20:05.337+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T16:20:03.355014+00:00 [queued]>
+[2023-11-23T16:20:05.347+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T16:20:03.355014+00:00 [queued]>
+[2023-11-23T16:20:05.348+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T16:20:05.361+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-23 16:20:03.355014+00:00
+[2023-11-23T16:20:05.367+0000] {standard_task_runner.py:57} INFO - Started process 5021 to run task
+[2023-11-23T16:20:05.370+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-23T16:20:03.355014+00:00', '--job-id', '610', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpx0af33li']
+[2023-11-23T16:20:05.372+0000] {standard_task_runner.py:85} INFO - Job 610: Subtask Extract
+[2023-11-23T16:20:05.423+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-23T16:20:03.355014+00:00 [running]> on host b36ebcee5948
+[2023-11-23T16:20:05.514+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-23T16:20:03.355014+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-23T16:20:03.355014+00:00'
+[2023-11-23T16:20:05.784+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:32: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences, delimiter=';')
+
+[2023-11-23T16:20:06.232+0000] {logging_mixin.py:151} INFO - 102
+[2023-11-23T16:20:06.235+0000] {logging_mixin.py:151} INFO - 100
+[2023-11-23T16:20:06.247+0000] {logging_mixin.py:151} INFO -    Code tranches d'age             Age
+0                    0       tous âges
+1                    1         0-4 ans
+2                    2        5-14 ans
+3                    3       15-44 ans
+4                    4       45-64 ans
+5                    5       65-74 ans
+6                    6  75 ans ou plus
+[2023-11-23T16:20:06.249+0000] {logging_mixin.py:151} INFO - Index(['code_age', 'agess'], dtype='object')
+[2023-11-23T16:20:06.250+0000] {logging_mixin.py:151} INFO - Une erreur s'est produite lors de l'extraction des données Age : 'DataFrame' object has no attribute 'append'
+[2023-11-23T16:20:06.259+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T16:20:06.295+0000] {logging_mixin.py:151} INFO - Une erreur s'est produite : (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "Departements_pkey"
+DETAIL:  Key (num_dep)=(1) already exists.
+
+[SQL: INSERT INTO "Departements" (num_dep, dep_name, region_name) VALUES (%(num_dep)s, %(dep_name)s, %(region_name)s)]
+[parameters: ({'num_dep': 1, 'dep_name': 'Ain', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 2, 'dep_name': 'Aisne', 'region_name': 'Hauts-de-France'}, {'num_dep': 3, 'dep_name': 'Allier', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 4, 'dep_name': 'Alpes-de-Haute-Provence', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 5, 'dep_name': 'Hautes-Alpes', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 6, 'dep_name': 'Alpes-Maritimes', 'region_name': "Provence-Alpes-Côte d'Azur"}, {'num_dep': 7, 'dep_name': 'Ardèche', 'region_name': 'Auvergne-Rhône-Alpes'}, {'num_dep': 8, 'dep_name': 'Ardennes', 'region_name': 'Grand Est'}  ... displaying 10 of 100 total bound parameter sets ...  {'num_dep': 0, 'dep_name': 'BENGUERDEN', 'region_name': 'TUNISIE'}, {'num_dep': 976, 'dep_name': 'Mayotte', 'region_name': 'Mayotte'})]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2023-11-23T16:20:06.525+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Projet.py", line 152, in extract_data
+    serveur.login(utilisateur_smtp, mot_de_passe_smtp)
+  File "/usr/local/lib/python3.8/smtplib.py", line 748, in login
+    raise last_exception
+  File "/usr/local/lib/python3.8/smtplib.py", line 737, in login
+    (code, resp) = self.auth(
+  File "/usr/local/lib/python3.8/smtplib.py", line 660, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials c3-20020a05600c0ac300b004064288597bsm2401934wmr.30 - gsmtp')
+[2023-11-23T16:20:06.536+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=Extract, execution_date=20231123T162003, start_date=20231123T162005, end_date=20231123T162006
+[2023-11-23T16:20:06.551+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 610 for task Extract ((535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials c3-20020a05600c0ac300b004064288597bsm2401934wmr.30 - gsmtp'); 5021)
+[2023-11-23T16:20:06.589+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-23T16:20:06.609+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

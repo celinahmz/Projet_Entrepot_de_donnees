@@ -1,0 +1,198 @@
+[2023-11-22T21:14:31.163+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.create_table manual__2023-11-22T21:14:25.447941+00:00 [queued]>
+[2023-11-22T21:14:31.177+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.create_table manual__2023-11-22T21:14:25.447941+00:00 [queued]>
+[2023-11-22T21:14:31.178+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T21:14:31.203+0000] {taskinstance.py:1382} INFO - Executing <Task(PostgresOperator): create_table> on 2023-11-22 21:14:25.447941+00:00
+[2023-11-22T21:14:31.219+0000] {standard_task_runner.py:57} INFO - Started process 4657 to run task
+[2023-11-22T21:14:31.223+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'create_table', 'manual__2023-11-22T21:14:25.447941+00:00', '--job-id', '444', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpg7vfshgb']
+[2023-11-22T21:14:31.226+0000] {standard_task_runner.py:85} INFO - Job 444: Subtask create_table
+[2023-11-22T21:14:31.311+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.create_table manual__2023-11-22T21:14:25.447941+00:00 [running]> on host b36ebcee5948
+[2023-11-22T21:14:31.416+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2023-11-22T21:14:25.447941+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-22T21:14:25.447941+00:00'
+[2023-11-22T21:14:31.420+0000] {sql.py:274} INFO - Executing: -- Suppresion des tables s'ils existent : 
+
+DROP TABLE IF EXISTS "Urgences" ;
+DROP TABLE IF EXISTS "Age" ;
+DROP TABLE IF EXISTS "Departements" ;
+
+--Création des tables :
+
+
+CREATE TABLE "Departements"
+(
+    num_dep integer PRIMARY KEY,
+    dep_name VARCHAR(255),
+    region_name VARCHAR(255)
+);
+
+CREATE TABLE "Age"
+(
+   Code_age integer PRIMARY KEY,
+   age VARCHAR(255)
+);
+
+CREATE TABLE "Urgences"
+(
+    dep integer,
+    sursaud_cl_age_corona integer , 
+    nbre_pass_corona FLOAT, 
+    nbre_pass_tot FLOAT, 
+    nbre_hospit_corona FLOAT,
+    nbre_pass_corona_h FLOAT, 
+    nbre_pass_corona_f FLOAT, 
+    nbre_pass_tot_h FLOAT, 
+    nbre_pass_tot_f FLOAT,
+    nbre_hospit_corona_h FLOAT, 
+    nbre_hospit_corona_f FLOAT, 
+    nbre_acte_corona FLOAT, 
+    nbre_acte_tot FLOAT,
+    nbre_acte_corona_h FLOAT, 
+    nbre_acte_corona_f FLOAT, 
+    nbre_acte_tot_h FLOAT, 
+    nbre_acte_tot_f FLOAT,
+    FOREIGN KEY (dep) REFERENCES "Departements"(num_dep),
+    FOREIGN KEY (sursaud_cl_age_corona) REFERENCES "Age"(Code_age)
+);
+
+
+
+-- -- Suppression des clés étrangères s'elles existent :
+-- ALTER TABLE IF EXISTS "Urgences" DROP CONSTRAINT IF EXISTS fk_dep CASCADE;
+-- ALTER TABLE IF EXISTS "Urgences" DROP CONSTRAINT IF EXISTS fk_age CASCADE;
+
+-- -- Suppression des tables s'elles existent :
+-- DROP TABLE IF EXISTS "Urgences" CASCADE;
+-- DROP TABLE IF EXISTS "Age" CASCADE;
+-- DROP TABLE IF EXISTS "Departements" CASCADE;
+
+-- -- Création des tables :
+
+-- CREATE TABLE "Departements"
+-- (
+--     num_dep integer PRIMARY KEY,
+--     dep_name VARCHAR(255),
+--     region_name VARCHAR(255)
+-- );
+
+-- CREATE TABLE "Age"
+-- (
+--     Code_age integer PRIMARY KEY,
+--     age VARCHAR(255)
+-- );
+
+-- CREATE TABLE "Urgences"(
+--     dep integer,
+--     sursaud_cl_age_corona integer , 
+--     nbre_pass_corona FLOAT, 
+--     nbre_pass_tot FLOAT, 
+--     nbre_hospit_corona FLOAT,
+--     nbre_pass_corona_h FLOAT, 
+--     nbre_pass_corona_f FLOAT, 
+--     nbre_pass_tot_h FLOAT, 
+--     nbre_pass_tot_f FLOAT,
+--     nbre_hospit_corona_h FLOAT, 
+--     nbre_hospit_corona_f FLOAT, 
+--     nbre_acte_corona FLOAT, 
+--     nbre_acte_tot FLOAT,
+--     nbre_acte_corona_h FLOAT, 
+--     nbre_acte_corona_f FLOAT, 
+--     nbre_acte_tot_h FLOAT, 
+--     nbre_acte_tot_f FLOAT,
+--     FOREIGN KEY (dep) REFERENCES "Departements"(num_dep),
+--     FOREIGN KEY (sursaud_cl_age_corona) REFERENCES "Age"(Code_age)
+-- );
+[2023-11-22T21:14:31.436+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-22T21:14:31.450+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-22T21:14:31.513+0000] {sql.py:418} INFO - Running statement: -- Suppresion des tables s'ils existent : 
+
+DROP TABLE IF EXISTS "Urgences" ;
+DROP TABLE IF EXISTS "Age" ;
+DROP TABLE IF EXISTS "Departements" ;
+
+--Création des tables :
+
+
+CREATE TABLE "Departements"
+(
+    num_dep integer PRIMARY KEY,
+    dep_name VARCHAR(255),
+    region_name VARCHAR(255)
+);
+
+CREATE TABLE "Age"
+(
+   Code_age integer PRIMARY KEY,
+   age VARCHAR(255)
+);
+
+CREATE TABLE "Urgences"
+(
+    dep integer,
+    sursaud_cl_age_corona integer , 
+    nbre_pass_corona FLOAT, 
+    nbre_pass_tot FLOAT, 
+    nbre_hospit_corona FLOAT,
+    nbre_pass_corona_h FLOAT, 
+    nbre_pass_corona_f FLOAT, 
+    nbre_pass_tot_h FLOAT, 
+    nbre_pass_tot_f FLOAT,
+    nbre_hospit_corona_h FLOAT, 
+    nbre_hospit_corona_f FLOAT, 
+    nbre_acte_corona FLOAT, 
+    nbre_acte_tot FLOAT,
+    nbre_acte_corona_h FLOAT, 
+    nbre_acte_corona_f FLOAT, 
+    nbre_acte_tot_h FLOAT, 
+    nbre_acte_tot_f FLOAT,
+    FOREIGN KEY (dep) REFERENCES "Departements"(num_dep),
+    FOREIGN KEY (sursaud_cl_age_corona) REFERENCES "Age"(Code_age)
+);
+
+
+
+-- -- Suppression des clés étrangères s'elles existent :
+-- ALTER TABLE IF EXISTS "Urgences" DROP CONSTRAINT IF EXISTS fk_dep CASCADE;
+-- ALTER TABLE IF EXISTS "Urgences" DROP CONSTRAINT IF EXISTS fk_age CASCADE;
+
+-- -- Suppression des tables s'elles existent :
+-- DROP TABLE IF EXISTS "Urgences" CASCADE;
+-- DROP TABLE IF EXISTS "Age" CASCADE;
+-- DROP TABLE IF EXISTS "Departements" CASCADE;
+
+-- -- Création des tables :
+
+-- CREATE TABLE "Departements"
+-- (
+--     num_dep integer PRIMARY KEY,
+--     dep_name VARCHAR(255),
+--     region_name VARCHAR(255)
+-- );
+
+-- CREATE TABLE "Age"
+-- (
+--     Code_age integer PRIMARY KEY,
+--     age VARCHAR(255)
+-- );
+
+-- CREATE TABLE "Urgences"(
+--     dep integer,
+--     sursaud_cl_age_corona integer , 
+--     nbre_pass_corona FLOAT, 
+--     nbre_pass_tot FLOAT, 
+--     nbre_hospit_corona FLOAT,
+--     nbre_pass_corona_h FLOAT, 
+--     nbre_pass_corona_f FLOAT, 
+--     nbre_pass_tot_h FLOAT, 
+--     nbre_pass_tot_f FLOAT,
+--     nbre_hospit_corona_h FLOAT, 
+--     nbre_hospit_corona_f FLOAT, 
+--     nbre_acte_corona FLOAT, 
+--     nbre_acte_tot FLOAT,
+--     nbre_acte_corona_h FLOAT, 
+--     nbre_acte_corona_f FLOAT, 
+--     nbre_acte_tot_h FLOAT, 
+--     nbre_acte_tot_f FLOAT,
+--     FOREIGN KEY (dep) REFERENCES "Departements"(num_dep),
+--     FOREIGN KEY (sursaud_cl_age_corona) REFERENCES "Age"(Code_age)
+-- );, parameters: None
+[2023-11-22T21:14:31.572+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Projet1, task_id=create_table, execution_date=20231122T211425, start_date=20231122T211431, end_date=20231122T211431
+[2023-11-22T21:14:31.599+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-22T21:14:31.631+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

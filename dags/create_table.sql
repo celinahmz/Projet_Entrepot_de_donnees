@@ -1,6 +1,7 @@
 -- Création de la table pour stocker les données
-CREATE TABLE analyse_prix (
+-- Créer la table de fait urgences
+CREATE TABLE Urgences (
     code commune INT,
     Valeur fonciere FLOAT,
-    -- Autres colonnes ici
 );
+

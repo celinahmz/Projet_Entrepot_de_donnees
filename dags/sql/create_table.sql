@@ -1,6 +1,28 @@
-CREATE TABLE IF NOT EXISTS "Urgences"(
-    dep VARCHAR(255),
-    sursaud_cl_age_corona VARCHAR(255), 
+-- Suppression des tables s'ils existent
+DROP TABLE IF EXISTS "Urgences";
+DROP TABLE IF EXISTS "Ages";
+DROP TABLE IF EXISTS "Departements";
+
+-- Création des tables
+
+CREATE TABLE "Departements"
+(
+    num_dep integer PRIMARY KEY,
+    dep_name VARCHAR(255),
+    region_name VARCHAR(255)
+);
+
+CREATE TABLE "Ages"
+(
+    Code_age integer PRIMARY KEY,
+    Agess VARCHAR(255)
+);
+
+CREATE TABLE "Urgences"
+(
+    dep integer,
+    date_de_passage date ,
+    sursaud_cl_age_corona integer , 
     nbre_pass_corona FLOAT, 
     nbre_pass_tot FLOAT, 
     nbre_hospit_corona FLOAT,
@@ -18,19 +40,7 @@ CREATE TABLE IF NOT EXISTS "Urgences"(
     nbre_acte_tot_f FLOAT
 );
 
-CREATE TABLE IF NOT EXISTS "Departements"
-(
-    num_dep VARCHAR(255),
-    dep_name VARCHAR(255),
-    region_name VARCHAR(255)
-);
-
-CREATE TABLE IF NOT EXISTS "Age"
-(
-   Code_age VARCHAR(255),
-   age VARCHAR(255)
-);
-
-
-
+-- Ajout des contraintes de clé étrangère
+ALTER TABLE "Urgences" ADD CONSTRAINT Urgences_dep_fkey FOREIGN KEY (dep) REFERENCES "Departements"(num_dep);
+ALTER TABLE "Urgences" ADD CONSTRAINT Urgences_age_fkey FOREIGN KEY (sursaud_cl_age_corona) REFERENCES "Ages"(Code_age);
 

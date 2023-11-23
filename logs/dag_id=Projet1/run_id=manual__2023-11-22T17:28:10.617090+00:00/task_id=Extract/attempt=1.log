@@ -1,0 +1,39 @@
+[2023-11-22T17:29:07.570+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-22T17:28:10.617090+00:00 [queued]>
+[2023-11-22T17:29:07.628+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-22T17:28:10.617090+00:00 [queued]>
+[2023-11-22T17:29:07.629+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-22T17:29:07.749+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-22 17:28:10.617090+00:00
+[2023-11-22T17:29:07.779+0000] {standard_task_runner.py:57} INFO - Started process 3675 to run task
+[2023-11-22T17:29:07.797+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-22T17:28:10.617090+00:00', '--job-id', '419', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmp0yhsuv4v']
+[2023-11-22T17:29:07.799+0000] {standard_task_runner.py:85} INFO - Job 419: Subtask Extract
+[2023-11-22T17:29:08.013+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-22T17:28:10.617090+00:00 [running]> on host b36ebcee5948
+[2023-11-22T17:29:08.308+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-22T17:28:10.617090+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-22T17:28:10.617090+00:00'
+[2023-11-22T17:29:09.054+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:17: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences,  delimiter=';' )
+
+[2023-11-22T17:29:12.454+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Projet.py", line 39, in extract_data
+    df_departements['num_dep'] = df_departements['num_dep'].astype(int)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/generic.py", line 6324, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/internals/managers.py", line 451, in astype
+    return self.apply(
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/internals/managers.py", line 352, in apply
+    applied = getattr(b, f)(**kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/internals/blocks.py", line 511, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/dtypes/astype.py", line 242, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/dtypes/astype.py", line 187, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/core/dtypes/astype.py", line 138, in _astype_nansafe
+    return arr.astype(dtype, copy=True)
+ValueError: invalid literal for int() with base 10: '2A'
+[2023-11-22T17:29:12.544+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=Projet1, task_id=Extract, execution_date=20231122T172810, start_date=20231122T172907, end_date=20231122T172912
+[2023-11-22T17:29:12.636+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 419 for task Extract (invalid literal for int() with base 10: '2A'; 3675)
+[2023-11-22T17:29:12.984+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-22T17:29:13.069+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
