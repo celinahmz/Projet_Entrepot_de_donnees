@@ -1,0 +1,51 @@
+[2023-11-24T13:57:41.121+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-24T13:57:36.907657+00:00 [queued]>
+[2023-11-24T13:57:41.136+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-24T13:57:36.907657+00:00 [queued]>
+[2023-11-24T13:57:41.137+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-24T13:57:41.157+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-24 13:57:36.907657+00:00
+[2023-11-24T13:57:41.168+0000] {standard_task_runner.py:57} INFO - Started process 4073 to run task
+[2023-11-24T13:57:41.175+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-24T13:57:36.907657+00:00', '--job-id', '850', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpyznorcf5']
+[2023-11-24T13:57:41.178+0000] {standard_task_runner.py:85} INFO - Job 850: Subtask Extract
+[2023-11-24T13:57:41.278+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-24T13:57:36.907657+00:00 [running]> on host b36ebcee5948
+[2023-11-24T13:57:41.496+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-24T13:57:36.907657+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-24T13:57:36.907657+00:00'
+[2023-11-24T13:57:41.825+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:34: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences, delimiter=';')
+
+[2023-11-24T13:57:43.590+0000] {logging_mixin.py:151} INFO - Index(['code_age', 'agess'], dtype='object')
+[2023-11-24T13:57:43.593+0000] {logging_mixin.py:151} INFO - Une erreur s'est produite lors de l'extraction des données Age : 'DataFrame' object has no attribute 'append'
+[2023-11-24T13:57:43.609+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-24T13:57:43.671+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-24T13:57:43.712+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-24T13:58:11.359+0000] {logging_mixin.py:151} INFO - ########################################################################
+[2023-11-24T13:58:11.361+0000] {logging_mixin.py:151} INFO - #                                                                      #
+[2023-11-24T13:58:11.362+0000] {logging_mixin.py:151} INFO - #   ce dessous est la visualisation du contenu de la table Urgences :  #
+[2023-11-24T13:58:11.362+0000] {logging_mixin.py:151} INFO - #                                                                      #
+[2023-11-24T13:58:11.363+0000] {logging_mixin.py:151} INFO - ########################################################################
+[2023-11-24T13:58:11.372+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-24T13:58:11.383+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  return psql.read_sql(sql, con=conn, params=parameters, **kwargs)
+
+[2023-11-24T13:58:11.522+0000] {logging_mixin.py:151} INFO -         h       f    dep
+0   764.0   854.0    0.0
+1   554.0   692.0    1.0
+2   274.0   230.0   10.0
+3   328.0   348.0   11.0
+4   142.0    94.0   12.0
+..    ...     ...    ...
+95  586.0   568.0  971.0
+96  436.0   450.0  972.0
+97  242.0   348.0  973.0
+98  906.0  1024.0  974.0
+99   12.0    12.0  976.0
+
+[100 rows x 3 columns]
+[2023-11-24T13:58:11.523+0000] {logging_mixin.py:151} INFO - ========================
+[2023-11-24T13:58:12.115+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2023-11-24T13:58:12.118+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2023-11-24T13:58:12.138+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2023-11-24T13:58:12.141+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2023-11-24T13:58:12.143+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2023-11-24T13:58:12.144+0000] {category.py:223} INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[2023-11-24T13:58:12.157+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-24T13:58:12.171+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Projet1, task_id=Extract, execution_date=20231124T135736, start_date=20231124T135741, end_date=20231124T135812
+[2023-11-24T13:58:12.219+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-24T13:58:12.268+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,33 @@
+[2023-11-24T13:51:53.740+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.install_matplotlib manual__2023-11-24T13:51:49.270490+00:00 [queued]>
+[2023-11-24T13:51:53.752+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.install_matplotlib manual__2023-11-24T13:51:49.270490+00:00 [queued]>
+[2023-11-24T13:51:53.753+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2023-11-24T13:51:53.772+0000] {taskinstance.py:1382} INFO - Executing <Task(BashOperator): install_matplotlib> on 2023-11-24 13:51:49.270490+00:00
+[2023-11-24T13:51:53.780+0000] {standard_task_runner.py:57} INFO - Started process 3974 to run task
+[2023-11-24T13:51:53.784+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'install_matplotlib', 'manual__2023-11-24T13:51:49.270490+00:00', '--job-id', '848', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmpdx92fmt3']
+[2023-11-24T13:51:53.786+0000] {standard_task_runner.py:85} INFO - Job 848: Subtask install_matplotlib
+[2023-11-24T13:51:53.847+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.install_matplotlib manual__2023-11-24T13:51:49.270490+00:00 [running]> on host b36ebcee5948
+[2023-11-24T13:51:53.936+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='install_matplotlib' AIRFLOW_CTX_EXECUTION_DATE='2023-11-24T13:51:49.270490+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-24T13:51:49.270490+00:00'
+[2023-11-24T13:51:53.940+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-11-24T13:51:53.943+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'pip install matplotlib']
+[2023-11-24T13:51:53.962+0000] {subprocess.py:86} INFO - Output:
+[2023-11-24T13:51:55.567+0000] {subprocess.py:93} INFO - Defaulting to user installation because normal site-packages is not writeable
+[2023-11-24T13:51:55.873+0000] {subprocess.py:93} INFO - Requirement already satisfied: matplotlib in /home/***/.local/lib/python3.8/site-packages (3.7.4)
+[2023-11-24T13:51:55.885+0000] {subprocess.py:93} INFO - Requirement already satisfied: python-dateutil>=2.7 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (2.8.2)
+[2023-11-24T13:51:55.888+0000] {subprocess.py:93} INFO - Requirement already satisfied: importlib-resources>=3.2.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (6.1.0)
+[2023-11-24T13:51:55.889+0000] {subprocess.py:93} INFO - Requirement already satisfied: numpy<2,>=1.20 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (1.24.4)
+[2023-11-24T13:51:55.889+0000] {subprocess.py:93} INFO - Requirement already satisfied: kiwisolver>=1.0.1 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (1.4.5)
+[2023-11-24T13:51:55.890+0000] {subprocess.py:93} INFO - Requirement already satisfied: pyparsing>=2.3.1 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (3.1.1)
+[2023-11-24T13:51:55.892+0000] {subprocess.py:93} INFO - Requirement already satisfied: cycler>=0.10 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (0.12.1)
+[2023-11-24T13:51:55.895+0000] {subprocess.py:93} INFO - Requirement already satisfied: packaging>=20.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (23.2)
+[2023-11-24T13:51:55.898+0000] {subprocess.py:93} INFO - Requirement already satisfied: fonttools>=4.22.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (4.45.1)
+[2023-11-24T13:51:55.899+0000] {subprocess.py:93} INFO - Requirement already satisfied: pillow>=6.2.0 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (10.1.0)
+[2023-11-24T13:51:55.902+0000] {subprocess.py:93} INFO - Requirement already satisfied: contourpy>=1.0.1 in /home/***/.local/lib/python3.8/site-packages (from matplotlib) (1.1.1)
+[2023-11-24T13:51:56.009+0000] {subprocess.py:93} INFO - Requirement already satisfied: zipp>=3.1.0 in /home/***/.local/lib/python3.8/site-packages (from importlib-resources>=3.2.0->matplotlib) (3.17.0)
+[2023-11-24T13:51:56.036+0000] {subprocess.py:93} INFO - Requirement already satisfied: six>=1.5 in /home/***/.local/lib/python3.8/site-packages (from python-dateutil>=2.7->matplotlib) (1.16.0)
+[2023-11-24T13:52:06.452+0000] {subprocess.py:93} INFO - 
+[2023-11-24T13:52:06.453+0000] {subprocess.py:93} INFO - [notice] A new release of pip is available: 23.0.1 -> 23.3.1
+[2023-11-24T13:52:06.453+0000] {subprocess.py:93} INFO - [notice] To update, run: pip install --upgrade pip
+[2023-11-24T13:52:06.670+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-11-24T13:52:06.698+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Projet1, task_id=install_matplotlib, execution_date=20231124T135149, start_date=20231124T135153, end_date=20231124T135206
+[2023-11-24T13:52:06.723+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-24T13:52:06.741+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
