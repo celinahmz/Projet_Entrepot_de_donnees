@@ -1,0 +1,45 @@
+[2023-11-23T19:30:35.396+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T19:30:16.951590+00:00 [queued]>
+[2023-11-23T19:30:35.409+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Projet1.Extract manual__2023-11-23T19:30:16.951590+00:00 [queued]>
+[2023-11-23T19:30:35.409+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2023-11-23T19:30:35.425+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): Extract> on 2023-11-23 19:30:16.951590+00:00
+[2023-11-23T19:30:35.430+0000] {standard_task_runner.py:57} INFO - Started process 1051 to run task
+[2023-11-23T19:30:35.433+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Projet1', 'Extract', 'manual__2023-11-23T19:30:16.951590+00:00', '--job-id', '677', '--raw', '--subdir', 'DAGS_FOLDER/Projet.py', '--cfg-path', '/tmp/tmp8njrep_n']
+[2023-11-23T19:30:35.435+0000] {standard_task_runner.py:85} INFO - Job 677: Subtask Extract
+[2023-11-23T19:30:35.484+0000] {task_command.py:416} INFO - Running <TaskInstance: Projet1.Extract manual__2023-11-23T19:30:16.951590+00:00 [running]> on host b36ebcee5948
+[2023-11-23T19:30:35.566+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Projet1' AIRFLOW_CTX_TASK_ID='Extract' AIRFLOW_CTX_EXECUTION_DATE='2023-11-23T19:30:16.951590+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-11-23T19:30:16.951590+00:00'
+[2023-11-23T19:30:35.860+0000] {warnings.py:109} WARNING - /opt/***/dags/Projet.py:31: DtypeWarning: Columns (0) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_urgences = pd.read_csv(csv_file_path_urgences, delimiter=';')
+
+[2023-11-23T19:30:36.741+0000] {logging_mixin.py:151} INFO - Index(['code_age', 'agess'], dtype='object')
+[2023-11-23T19:30:36.742+0000] {logging_mixin.py:151} INFO - Une erreur s'est produite lors de l'extraction des données Age : 'DataFrame' object has no attribute 'append'
+[2023-11-23T19:30:36.758+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T19:30:36.821+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T19:30:36.850+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T19:31:03.948+0000] {logging_mixin.py:151} INFO - ########################################################################
+[2023-11-23T19:31:03.949+0000] {logging_mixin.py:151} INFO - #                                                                      #
+[2023-11-23T19:31:03.950+0000] {logging_mixin.py:151} INFO - #   ce dessous est la visualisation du contenu de la table Urgences :  #
+[2023-11-23T19:31:03.950+0000] {logging_mixin.py:151} INFO - #                                                                      #
+[2023-11-23T19:31:03.951+0000] {logging_mixin.py:151} INFO - ########################################################################
+[2023-11-23T19:31:03.958+0000] {base.py:73} INFO - Using connection ID 'postgres_connexion' for task execution.
+[2023-11-23T19:31:03.969+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  return psql.read_sql(sql, con=conn, params=parameters, **kwargs)
+
+[2023-11-23T19:31:04.022+0000] {logging_mixin.py:151} INFO -     total  dep
+0    4242    0
+1    2121    1
+2    2121    2
+3    2121    3
+4    2121    4
+..    ...  ...
+95   2121  971
+96   2121  972
+97   2121  973
+98   2121  974
+99   2121  976
+
+[100 rows x 2 columns]
+[2023-11-23T19:31:04.023+0000] {logging_mixin.py:151} INFO - ========================
+[2023-11-23T19:31:04.473+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-11-23T19:31:04.483+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=Projet1, task_id=Extract, execution_date=20231123T193016, start_date=20231123T193035, end_date=20231123T193104
+[2023-11-23T19:31:04.525+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-11-23T19:31:04.546+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

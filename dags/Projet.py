@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime , timedelta
 import os
 import pandas as pd
 from airflow import DAG
@@ -13,7 +13,10 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 # Ajoutez ceci au début de votre fichier DAG pour installer Matplotlib
 from airflow.operators.bash_operator import BashOperator
+from airflow.operators.email_operator import EmailOperator
 
+email_subject = "yal 3ali "
+email_body = "Le DAG jawou behy !"
 
 
 
@@ -54,9 +57,8 @@ def extract_data():
             df_departements['num_dep'] = pd.to_numeric(df_departements['num_dep'], errors='coerce')
             df_departements['num_dep'] = df_departements['num_dep'].astype('Int64')
             df_departements['dep_name'] = df_departements['dep_name'].astype(str)
-            print(len(df_departements))
             df_departements = df_departements.dropna(subset=['num_dep'])
-            print(len(df_departements))
+
 
     except Exception as e_departements:
         # Si une exception se produit pendant l'extraction des données Departements
@@ -69,7 +71,6 @@ def extract_data():
         df_age = pd.read_csv(csv_file_path_age, delimiter=";")
         df_age["Code tranches d'age"] = df_age["Code tranches d'age"].astype(int)
         df_age['Age'] = df_age['Age'].astype(str)
-        print(df_age)
 
         postgres_sql_upload = PostgresHook(postgres_conn_id="postgres_connexion")
 
@@ -107,7 +108,7 @@ def extract_data():
         print('#                                                                      #')
         print('########################################################################')
 
-        show_tables_query = "SELECT * FROM \"Urgences\";"
+        show_tables_query = "SELECT sum(nbre_pass_corona_h) as h, sum(nbre_pass_corona_f) as f ,dep FROM \"Urgences\"   group by dep;"
         tables = postgres_sql_upload.get_pandas_df(show_tables_query)
         print(tables)
 
@@ -162,24 +163,31 @@ def extract_data():
     # Récupérer les données nécessaires de la base de données ou d'où vous les avez
     # Exemple : récupérer les données de la table 'Urgences'
     # Données fictives
-    x = [1, 2, 3, 4, 5]
-    y = [2, 4, 6, 8, 10]    
+    chemin= os.path.expandvars("${AIRFLOW_HOME}/data/")
+    x = tables['dep']
+    y = tables['h']    
+    z = tables['f']
     import matplotlib.pyplot as plt
 
     # Création de la courbe
     plt.plot(x, y, label='Ma Courbe')   
 
     # Ajout de titres et d'étiquettes
-    plt.title('Exemple de Courbe avec Matplotlib')
-    plt.xlabel('Axe X')
-    plt.ylabel('Axe Y') 
+    plt.figure(figsize=(8, 6))
+    plt.plot(x,y,label= "Homme", color='blue')
+    plt.plot(x,z,label= "Femme", color='red')
+
+    plt.title('Total de contaminés COVID-19 hommes et femmes par département')
+    plt.xlabel('Département')
+    plt.ylabel('Total de contamins COVID-19') 
 
     # Ajout d'une légende
     plt.legend()    
 
     # Affichage de la courbe
     plt.show()
-
+    chemin =chemin +"nbre_de_passager_covid_par_dep.png"
+    #plt.savefig(chemin)
     # Vous pouvez également afficher le graphique avec plt.show() si vous le souhaitez
     # plt.show()
 
@@ -189,6 +197,11 @@ def extract_data():
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
+    'email': ['filali.dia18@gmail.com'],
+    'email_on_failure': True,
+    'email_on_retry': True,
+    'retries': 1,
+    'retry_delay': timedelta(seconds=5),
 }
 with DAG(
     'Projet1',
@@ -215,8 +228,15 @@ with DAG(
         task_id='Extract',
         python_callable=extract_data
     )
+    email_task = EmailOperator(
+    task_id='send_success_email',
+    to='filali.dia18@gmail.com',  # Remplacez par votre adresse e-mail
+    subject=email_subject,
+    html_content=email_body,
+)
+
 # Assurez-vous de définir la dépendance appropriée
-create_table >>install_matplotlib >> extract
+create_table >>install_matplotlib >> extract >> email_task
 
 
 #     email_on_success = EmailOperator(
