@@ -1,5 +1,5 @@
 # Projet_Entrepot_de_donnees
-rojet de Modélisation d'Entrepôt de Données pour les Urgences COVID-19 en France
+Projet de Modélisation d'Entrepôt de Données pour les Urgences COVID-19 en France
 
 Introduction :
 Le projet vise à créer un entrepôt de données pour analyser les urgences liées au COVID-19 en France. À partir de fichiers sources, l'objectif est de modéliser un schéma en étoile pour répondre à des questions spécifiques et faciliter l'exploration des données.
