@@ -314,6 +314,5 @@ with DAG(
 # )
 
 
-# Assurez-vous de définir la dépendance appropriée
 create_table >>install_matplotlib >> extract_transform_clean_load
 
