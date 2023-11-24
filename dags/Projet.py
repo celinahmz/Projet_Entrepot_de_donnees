@@ -11,18 +11,8 @@ from airflow.operators.email_operator import EmailOperator
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-# Ajoutez ceci au début de votre fichier DAG pour installer Matplotlib
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.email_operator import EmailOperator
-
-
-
-
-
-
-
-
-# Ensuite, définissez votre tâche d'extraction après l'installation
 
 
 
@@ -59,7 +49,6 @@ def extract_data():
    except Exception as e_urgences:
        # Si une exception se produit pendant l'extraction des données Urgences
        print(f"Une erreur s'est produite lors de l'extraction des données Urgences : {str(e_urgences)}")
-       # Vous pouvez effectuer des actions spécifiques en cas d'erreur
 
 
    try:
@@ -84,7 +73,6 @@ def extract_data():
    except Exception as e_departements:
        # Si une exception se produit pendant l'extraction des données Departements
        print(f"Une erreur s'est produite lors de l'extraction des données Departements : {str(e_departements)}")
-       # Vous pouvez effectuer des actions spécifiques en cas d'erreur
 
 
    try:
@@ -110,7 +98,6 @@ def extract_data():
    except Exception as e_age:
        # Si une exception se produit pendant l'extraction des données Age
        print(f"Une erreur s'est produite lors de l'extraction des données Age : {str(e_age)}")
-       # Vous pouvez effectuer des actions spécifiques en cas d'erreur
    try:
         ########################################################################
         #                                                                      #
@@ -232,7 +219,6 @@ def extract_data():
    except Exception as e:
             # Si une exception se produit, imprimez l'erreur et faites toute autre action souhaitée
             print(f"Une erreur s'est produite : {str(e)}")
-             # Vous pouvez également lever une exception ici si vous voulez arrêter l'exécution du DAG      
 
 
 
